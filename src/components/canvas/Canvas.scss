@@ -1,0 +1,20 @@
+.Canvas {
+    margin-top: 50px;
+
+    .CanvasButtons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        .CanvasButton {
+            margin-left: 10px;
+            margin-right: 10px;
+
+            &.Red {
+                background-color: rgb(255, 61, 61)
+            }
+        }
+    }
+}
