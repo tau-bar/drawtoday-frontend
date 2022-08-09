@@ -47,7 +47,7 @@ const App = () => {
         <IconButton
           className="ThemeToggle"
           sx={{ ml: 1 }}
-          onClick={() => dispatch(toggleTheme())}
+          onClick={() => setTimeout(() => dispatch(toggleTheme()), 200)}
           color="inherit"
         >
           {mode === THEME.DARK ? <Brightness7 /> : <Brightness4 />}
