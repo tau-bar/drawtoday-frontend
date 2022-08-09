@@ -1,12 +1,7 @@
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  height: 100vh;
-
-  .ThemeToggle {
-    position: absolute;
-    right: 10px;
-  }
+  min-height: 500px;
 }
 
 .App-logo {
