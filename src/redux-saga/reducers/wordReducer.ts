@@ -2,7 +2,7 @@ import { Action, actionTypes } from "../interfaces/actions.interfaces";
 import { WordState } from "../interfaces/states.interfaces";
 
 const intitialState: WordState = {
-    wordOfTheDay: "nothing"
+    wordOfTheDay: ""
 };
 
 export default (state = intitialState, action: Action) => {

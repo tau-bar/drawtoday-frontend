@@ -1,13 +1,32 @@
 import { Button } from "@mui/material";
-import React, { useRef, useState, useSyncExternalStore } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import CanvasDraw from "react-canvas-draw";
 import ClearIcon from "@mui/icons-material/Clear";
 import "./Canvas.scss";
-import { Save, Undo } from "@mui/icons-material";
+import { Publish, Save, SaveAs, Undo } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux-saga/reducers/rootReducer";
+import { saveDrawingAsDraft } from "../../redux-saga/actions";
 
 const Canvas = () => {
   const [brushColor, setBrushColor] = useState("#000000");
   const [ref, setRef] = useState<CanvasDraw | null>();
+
+  const dispatch = useDispatch();
+  const {
+    canvas: { savedDraft, dateSaved },
+  } = useSelector((state: RootState) => state);
+
+  useEffect(() => {
+    if (ref) {
+      ref.loadSaveData(savedDraft);
+    }
+  }, [ref]);
 
   return (
     <div className="Canvas">
@@ -38,6 +57,26 @@ const Canvas = () => {
         ref={(canvasDraw) => setRef(canvasDraw)}
         brushColor={brushColor}
       />
+      <div className="CanvasButtons">
+        <Button
+          className="CanvasButton"
+          variant="contained"
+          endIcon={<Save />}
+          onClick={() =>
+            dispatch(saveDrawingAsDraft(ref?.getSaveData(), new Date()))
+          }
+        >
+          Save
+        </Button>
+        <Button
+          className="CanvasButton"
+          variant="contained"
+          endIcon={<Publish />}
+          onClick={() => console.log(ref?.getSaveData())}
+        >
+          Post!
+        </Button>
+      </div>
     </div>
   );
 };
