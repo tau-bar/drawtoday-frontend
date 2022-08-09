@@ -3,7 +3,7 @@ import Canvas from "../../components/canvas/Canvas";
 import WordCard from "../../components/card/WordCard";
 import "./DrawPage.scss";
 
-const DrawPage = () => {
+const DrawPage = ({ ...other }) => {
   return (
     <div className="DrawPage">
       <WordCard>Word</WordCard>
