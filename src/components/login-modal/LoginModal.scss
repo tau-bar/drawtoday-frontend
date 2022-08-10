@@ -1,0 +1,12 @@
+.ChangeLoginMode {
+    color: rgb(0, 132, 255);
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.LoginModalError {
+    color: red;
+    font-size: 12px;
+}

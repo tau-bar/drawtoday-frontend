@@ -6,22 +6,22 @@ import { getWordOfDay } from "../../redux-saga/actions";
 import { RootState } from "../../redux-saga/reducers/rootReducer";
 import "./DrawPage.scss";
 
-const DrawPage = ({ ...other }) => {
-  const dispatch = useDispatch();
-  const {
-    words: { wordOfTheDay },
-  } = useSelector((state: RootState) => state);
+function DrawPage({ ...other }) {
+	const dispatch = useDispatch();
+	const {
+		words: { wordOfTheDay },
+	} = useSelector((state: RootState) => state);
 
-  useEffect(() => {
-    dispatch(getWordOfDay());
-  }, []);
+	useEffect(() => {
+		dispatch(getWordOfDay());
+	}, []);
 
-  return (
-    <div className="DrawPage">
-      <WordCard>{wordOfTheDay}</WordCard>
-      <Canvas />
-    </div>
-  );
-};
+	return (
+		<div className="DrawPage">
+			<WordCard>{wordOfTheDay}</WordCard>
+			<Canvas />
+		</div>
+	);
+}
 
 export default DrawPage;

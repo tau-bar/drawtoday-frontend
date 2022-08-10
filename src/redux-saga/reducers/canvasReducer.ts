@@ -6,7 +6,7 @@ const intitialState: CanvasState = {
     dateSaved: new Date()
 };
 
-export default (state = intitialState, action: Action) => {
+const reducer = (state = intitialState, action: Action) => {
     switch (action.type) {
         case actionTypes.SAVE_DRAFT_IN_STORAGE:
             return {
@@ -18,3 +18,5 @@ export default (state = intitialState, action: Action) => {
             return state
     }
 }
+
+export default reducer

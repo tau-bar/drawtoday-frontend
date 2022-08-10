@@ -1,3 +1,4 @@
+
 export interface ThemePayload {
     mode: string;
 }
@@ -17,4 +18,24 @@ export interface PostDrawingPayload {
     wordId: number;
     userId: number;
     date: Date;
+}
+
+export interface LoginPayload {
+    username: string;
+    password: string;
+}
+
+export interface LoginSuccessPayload {
+    userId: number;
+    token: string;
+}
+
+export interface SignUpPayload {
+    username: string,
+    password: string,
+}
+
+export interface SignUpSuccessPayload {
+    userId: number;
+    token: string;
 }

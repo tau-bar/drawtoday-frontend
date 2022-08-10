@@ -1,5 +1,5 @@
-import * as payloads from "./payloads.interfaces"
 import * as data from "./data.interfaces"
+import * as payloads from "./payloads.interfaces"
 
 export enum actionTypes {
     SET_THEME = "SET_THEME",
@@ -13,7 +13,15 @@ export enum actionTypes {
 
     POST_DRAWING = "POST_DRAWING",
     POST_DRAWING_SUCCESS = "POST_DRAWING_SUCCESS",
-    POST_DRAWING_FAILED = "POST_DRAWING_FAILED", 
+    POST_DRAWING_FAILED = "POST_DRAWING_FAILED",
+
+    LOGIN = "LOGIN",
+    LOGIN_SUCCESS = "LOGIN_SUCESS",
+    LOGIN_FAILED = "LOGIN_FAILED",
+
+    SIGN_UP = "SIGN_UP",
+    SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS",
+    SIGN_UP_FAILED = "SIGN_UP_FAILED",
 }
 
 export interface SetTheme {
@@ -57,4 +65,37 @@ export interface PostDrawingFailed {
     type: actionTypes.POST_DRAWING_FAILED
 }
 
-export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed
+export interface Login {
+    type: actionTypes.LOGIN,
+    payload: payloads.LoginPayload,
+}
+
+export interface LoginSuccess {
+    type: actionTypes.LOGIN_SUCCESS,
+    payload: payloads.LoginSuccessPayload,
+}
+
+export interface LoginFailed {
+    type: actionTypes.LOGIN_FAILED,
+    error: data.Error,
+}
+
+export interface SignUp {
+    type: actionTypes.SIGN_UP,
+    payload: payloads.SignUpPayload
+}
+
+export interface SignUpSuccess {
+    type: actionTypes.SIGN_UP_SUCCESS,
+    payload: payloads.SignUpSuccessPayload
+}
+
+export interface SignUpFailed {
+    type: actionTypes.SIGN_UP_FAILED,
+    error: data.Error
+}
+
+export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed
+    | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed | Login
+    | LoginSuccess | LoginFailed | SignUp
+    | SignUpSuccess | SignUpFailed

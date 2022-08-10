@@ -1,6 +1,6 @@
 import { THEME } from "../../config/constants";
-import { ThemeState } from "../interfaces/states.interfaces";
 import { Action, actionTypes } from "../interfaces/actions.interfaces";
+import { ThemeState } from "../interfaces/states.interfaces";
 
 const intitialState: ThemeState = {
     mode: THEME.LIGHT
@@ -14,7 +14,7 @@ const getToggledTheme = (mode: THEME) => {
     }
 }
 
-export default (state = intitialState, action: Action) => {
+const reducer = (state = intitialState, action: Action) => {
     switch (action.type) {
         case actionTypes.SET_THEME:
             return {
@@ -30,3 +30,5 @@ export default (state = intitialState, action: Action) => {
             return state
     }
 }
+
+export default reducer;

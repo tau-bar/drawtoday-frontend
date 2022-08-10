@@ -16,5 +16,15 @@ export interface CanvasState {
 }
 
 export interface RootState {
-    theme: ThemeState
+    theme: ThemeState,
+    canvas: CanvasState,
+    words: WordState,
+    user: UserState,
+}
+
+export interface UserState {
+    userId: number,
+    token: string,
+    isLoginLoading: boolean,
+    loginError: string,
 }
