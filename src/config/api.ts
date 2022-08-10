@@ -1,20 +1,18 @@
 import { create } from "apisauce";
-import axios from "axios";
-import { LoginRequest, PostDrawingRequest, SignUpRequest } from "./constants";
-
-export const getWordOfDay = () => {
-    return axios.get("http://localhost:3001/api/getWordOfDay");
-};
-
-export const api = create({
-    baseURL: 'http://localhost:3001',
-    headers: { Accept: 'application/vnd.github.v3+json' },
-})
-
+import { GetWordOfDayRequest, LoginRequest, PostDrawingRequest, SignUpRequest } from "./constants";
 
 const header = {
     "content-type": "application/json",
 }
+
+export const api = create({
+    baseURL: 'http://localhost:3001',
+    headers: header,
+})
+
+export const getWordOfDay = (data: GetWordOfDayRequest) => {
+    return api.get("http://localhost:3001/api/getWordOfDay", data);
+};
 
 export const postUserDrawing = async (data: PostDrawingRequest) => {
     return await api.post("api/postDrawing", data)

@@ -35,6 +35,7 @@ export interface ToggleTheme {
 
 export interface GetWordOfDay {
     type: actionTypes.GET_WORD_OF_DAY
+    payload: payloads.GetWordOfDayPayload
 }
 
 export interface GetWordOfDaySuccess {

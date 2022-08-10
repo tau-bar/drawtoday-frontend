@@ -3,9 +3,16 @@ export interface ThemePayload {
     mode: string;
 }
 
+export interface GetWordOfDayPayload {
+    userId: number
+}
+
 export interface WordPayload {
-    word: string;
-    id: number;
+    word: {
+        word: string,
+        id: number
+    },
+    postedToday: boolean
 }
 
 export interface DraftPayload {

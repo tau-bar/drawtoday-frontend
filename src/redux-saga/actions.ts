@@ -29,8 +29,11 @@ export const toggleTheme = (): ToggleTheme => ({
     type: actionTypes.TOGGLE_THEME,
 });
 
-export const getWordOfDay = (): GetWordOfDay => ({
+export const getWordOfDay = (userId: number): GetWordOfDay => ({
     type: actionTypes.GET_WORD_OF_DAY,
+    payload: {
+        userId
+    }
 });
 
 export const getWordOfDaySuccess = (

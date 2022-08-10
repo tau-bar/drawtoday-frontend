@@ -10,11 +10,15 @@ function DrawPage({ ...other }) {
 	const dispatch = useDispatch();
 	const {
 		words: { wordOfTheDay },
+		user: { userId },
 	} = useSelector((state: RootState) => state);
 
 	useEffect(() => {
-		dispatch(getWordOfDay());
-	}, []);
+		if (userId !== 0) {
+			dispatch(getWordOfDay(userId));
+			dispatch(getWordOfDay(userId));
+		}
+	}, [userId]);
 
 	return (
 		<div className="DrawPage">

@@ -16,6 +16,7 @@ const Canvas = () => {
 	const {
 		canvas: { savedDraft },
 		words,
+		user: { userId },
 	} = useSelector((state: RootState) => state);
 
 	useEffect(() => {
@@ -24,10 +25,29 @@ const Canvas = () => {
 		}
 	}, [ref, savedDraft]);
 
+	const saveDrawing = () => {
+		dispatch(saveDrawingAsDraft(ref?.getSaveData(), new Date()));
+	};
+
+	const handlePublish = () => {
+		if (ref) {
+			saveDrawing();
+			dispatch(
+				postDrawing(ref?.getSaveData(), new Date(), userId, words.id)
+			);
+			dispatch(
+				postDrawing(ref?.getSaveData(), new Date(), userId, words.id)
+			);
+		} else {
+			console.error("Could not obtain ref to canvas.");
+		}
+	};
+
 	return (
 		<div className="Canvas">
 			<div className="CanvasButtons">
 				<Button
+					disabled={words.postedToday}
 					className="CanvasButton Red"
 					variant="contained"
 					endIcon={<ClearIcon />}
@@ -36,6 +56,7 @@ const Canvas = () => {
 					Clear
 				</Button>
 				<Button
+					disabled={words.postedToday}
 					className="CanvasButton"
 					variant="contained"
 					endIcon={<Undo />}
@@ -44,25 +65,26 @@ const Canvas = () => {
 					Undo
 				</Button>
 				<input
+					disabled={words.postedToday}
 					type="color"
 					value={brushColor}
 					onChange={(e) => setBrushColor(e.target.value)}
 				/>
 			</div>
 			<CanvasDraw
+				hideGrid
+				hideInterface
+				disabled={words.postedToday}
 				ref={(canvasDraw) => setRef(canvasDraw)}
 				brushColor={brushColor}
 			/>
 			<div className="CanvasButtons">
 				<Button
+					disabled={words.postedToday}
 					className="CanvasButton"
 					variant="contained"
 					endIcon={<Save />}
-					onClick={() =>
-						dispatch(
-							saveDrawingAsDraft(ref?.getSaveData(), new Date())
-						)
-					}
+					onClick={saveDrawing}
 				>
 					Save
 				</Button>
@@ -70,18 +92,8 @@ const Canvas = () => {
 					className="CanvasButton"
 					variant="contained"
 					endIcon={<Publish />}
-					onClick={() =>
-						ref
-							? dispatch(
-									postDrawing(
-										ref?.getSaveData(),
-										new Date(),
-										1,
-										words.id
-									)
-							  )
-							: console.error("Could not obtain ref to canvas.")
-					}
+					disabled={words.postedToday}
+					onClick={handlePublish}
 				>
 					Post!
 				</Button>

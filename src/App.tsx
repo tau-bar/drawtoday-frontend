@@ -1,30 +1,22 @@
-import {
-	Brightness4,
-	Brightness7,
-	Brush,
-	DynamicFeed,
-} from "@mui/icons-material";
+import { Brush, DynamicFeed } from "@mui/icons-material";
 import {
 	BottomNavigation,
 	BottomNavigationAction,
 	CssBaseline,
-	IconButton,
 	Paper,
 } from "@mui/material";
 import { cyan, deepOrange, grey, orange } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./App.scss";
+import TopAppBar from "./components/app-bar/AppBar";
 import LoginModal from "./components/login-modal/LoginModal";
-import { THEME } from "./config/constants";
 import BrowsePage from "./pages/browse-page/BrowsePage";
 import DrawPage from "./pages/draw-page/DrawPage";
-import { toggleTheme } from "./redux-saga/actions";
 import { RootState } from "./redux-saga/reducers/rootReducer";
 
 const App = () => {
-	const dispatch = useDispatch();
 	const {
 		theme: { mode },
 	} = useSelector((state: RootState) => state);
@@ -61,16 +53,7 @@ const App = () => {
 		<ThemeProvider theme={muiTheme}>
 			<CssBaseline />
 			<div className="App">
-				<IconButton
-					sx={{ ml: 1, position: "fixed", right: 10, top: 20 }}
-					className="ThemeToggle"
-					onClick={() =>
-						setTimeout(() => dispatch(toggleTheme()), 200)
-					}
-					color="inherit"
-				>
-					{mode === THEME.DARK ? <Brightness7 /> : <Brightness4 />}
-				</IconButton>
+				<TopAppBar />
 				<LoginModal />
 				{pages[currentPage]}
 				<Paper

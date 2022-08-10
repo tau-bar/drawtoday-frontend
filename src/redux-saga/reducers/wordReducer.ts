@@ -12,8 +12,9 @@ const reducer = (state = intitialState, action: Action) => {
         case actionTypes.GET_WORD_OF_DAY_SUCCESS:
             return {
                 ...state,
-                wordOfTheDay: action.payload.word,
-                id: action.payload.id,
+                wordOfTheDay: action.payload.word.word,
+                id: action.payload.word.id,
+                postedToday: action.payload.postedToday,
             };
         case actionTypes.POST_DRAWING_SUCCESS:
             return {
