@@ -9,7 +9,11 @@ export enum actionTypes {
     GET_WORD_OF_DAY_SUCCESS = "GET_WORD_OF_DAY_SUCCESS",
     GET_WORD_OF_DAY_FAILED = "GET_WORD_OF_DAY_FAILED",
 
-    SAVE_DRAFT_IN_STORAGE = "SAVE_DRAFT_IN_STORAGE"
+    SAVE_DRAFT_IN_STORAGE = "SAVE_DRAFT_IN_STORAGE",
+
+    POST_DRAWING = "POST_DRAWING",
+    POST_DRAWING_SUCCESS = "POST_DRAWING_SUCCESS",
+    POST_DRAWING_FAILED = "POST_DRAWING_FAILED", 
 }
 
 export interface SetTheme {
@@ -27,7 +31,7 @@ export interface GetWordOfDay {
 
 export interface GetWordOfDaySuccess {
     type: actionTypes.GET_WORD_OF_DAY_SUCCESS
-    payload: string
+    payload: payloads.WordPayload
 }
 
 export interface GetWordOfDayFailed {
@@ -40,4 +44,17 @@ export interface SaveDraftInStorage {
     payload: payloads.DraftPayload,
 }
 
-export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed | SaveDraftInStorage
+export interface PostDrawing {
+    type: actionTypes.POST_DRAWING,
+    payload: payloads.PostDrawingPayload,
+}
+
+export interface PostDrawingSuccess {
+    type: actionTypes.POST_DRAWING_SUCCESS
+}
+
+export interface PostDrawingFailed {
+    type: actionTypes.POST_DRAWING_FAILED
+}
+
+export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed

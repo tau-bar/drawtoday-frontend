@@ -6,6 +6,8 @@ export interface ThemeState {
 
 export interface WordState {
     wordOfTheDay: string
+    id: number
+    postedToday: boolean
 }
 
 export interface CanvasState {

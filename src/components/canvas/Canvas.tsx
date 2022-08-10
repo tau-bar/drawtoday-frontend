@@ -1,17 +1,12 @@
 import { Button } from "@mui/material";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import React, { useEffect, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 import ClearIcon from "@mui/icons-material/Clear";
 import "./Canvas.scss";
 import { Publish, Save, SaveAs, Undo } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux-saga/reducers/rootReducer";
-import { saveDrawingAsDraft } from "../../redux-saga/actions";
+import { postDrawing, saveDrawingAsDraft } from "../../redux-saga/actions";
 
 const Canvas = () => {
   const [brushColor, setBrushColor] = useState("#000000");
@@ -20,6 +15,7 @@ const Canvas = () => {
   const dispatch = useDispatch();
   const {
     canvas: { savedDraft, dateSaved },
+    words,
   } = useSelector((state: RootState) => state);
 
   useEffect(() => {
@@ -72,7 +68,13 @@ const Canvas = () => {
           className="CanvasButton"
           variant="contained"
           endIcon={<Publish />}
-          onClick={() => console.log(ref?.getSaveData())}
+          onClick={() =>
+            ref
+              ? dispatch(
+                  postDrawing(ref?.getSaveData(), new Date(), 1, words.id)
+                )
+              : console.error("Could not obtain ref to canvas.")
+          }
         >
           Post!
         </Button>
