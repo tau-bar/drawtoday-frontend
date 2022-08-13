@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { THEME } from "../../config/constants";
-import { toggleTheme } from "../../redux-saga/actions";
+import { logout, toggleTheme } from "../../redux-saga/actions";
 import { RootState } from "../../redux-saga/reducers/rootReducer";
 
 export const TopAppBar = () => {
@@ -44,7 +44,12 @@ export const TopAppBar = () => {
 							drawtoday
 						</Typography>
 						{userId !== 0 && (
-							<Button color="inherit">Logout</Button>
+							<Button
+								color="inherit"
+								onClick={() => dispatch(logout())}
+							>
+								Logout
+							</Button>
 						)}
 					</Toolbar>
 				</Paper>

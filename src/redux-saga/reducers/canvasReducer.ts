@@ -14,6 +14,8 @@ const reducer = (state = intitialState, action: Action) => {
                 savedDraft: action.payload.drawing,
                 dateSaved: action.payload.date,
             }
+        case actionTypes.LOGOUT:
+            return intitialState
         default:
             return state
     }

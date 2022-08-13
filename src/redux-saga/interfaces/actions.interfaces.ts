@@ -22,6 +22,8 @@ export enum actionTypes {
     SIGN_UP = "SIGN_UP",
     SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS",
     SIGN_UP_FAILED = "SIGN_UP_FAILED",
+
+    LOGOUT = "LOGOUT"
 }
 
 export interface SetTheme {
@@ -96,7 +98,11 @@ export interface SignUpFailed {
     error: data.Error
 }
 
+export interface Logout {
+    type: actionTypes.LOGOUT
+}
+
 export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed
     | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed | Login
     | LoginSuccess | LoginFailed | SignUp
-    | SignUpSuccess | SignUpFailed
+    | SignUpSuccess | SignUpFailed | Logout

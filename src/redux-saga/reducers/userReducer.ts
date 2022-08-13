@@ -13,7 +13,7 @@ const reducer = (state = intitialState, action: Action) => {
         case actionTypes.LOGIN:
             return {
                 ...state,
-                isLoginLoading: false,
+                isLoginLoading: true,
                 loginError: ""
             };
         case actionTypes.LOGIN_SUCCESS:
@@ -48,6 +48,8 @@ const reducer = (state = intitialState, action: Action) => {
                 isLoginLoading: false,
                 loginError: action.error.message,
             }
+        case actionTypes.LOGOUT:
+            return intitialState;
         default:
             return state;
     }

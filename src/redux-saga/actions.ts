@@ -7,6 +7,7 @@ import {
     Login,
     LoginFailed,
     LoginSuccess,
+    Logout,
     PostDrawing,
     PostDrawingFailed,
     PostDrawingSuccess,
@@ -121,4 +122,8 @@ export const signUpSuccess = (token: string, userId: number): SignUpSuccess => (
 export const signUpFailed = (error: data.Error): SignUpFailed => ({
     type: actionTypes.SIGN_UP_FAILED,
     error: error
+})
+
+export const logout = (): Logout => ({
+    type: actionTypes.LOGOUT
 })
