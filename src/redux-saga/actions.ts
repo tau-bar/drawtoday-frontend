@@ -1,6 +1,9 @@
 import { DEFAULT_CANVAS } from "../config/constants";
 import {
     actionTypes,
+    GetDrawing,
+    GetDrawingFailed,
+    GetDrawingSuccess,
     GetWordOfDay,
     GetWordOfDayFailed,
     GetWordOfDaySuccess,
@@ -131,3 +134,26 @@ export const signUpFailed = (error: data.Error): SignUpFailed => ({
 export const logout = (): Logout => ({
     type: actionTypes.LOGOUT
 })
+
+export const getDrawing = (userId: number, wordId: number): GetDrawing => ({
+    type: actionTypes.GET_DRAWING,
+    payload: {
+        wordId,
+        userId,
+    }
+})
+
+export const getDrawingSuccess = (drawing: string): GetDrawingSuccess => ({
+    type: actionTypes.GET_DRAWING_SUCCESS,
+    payload: {
+        drawing
+    }
+});
+
+export const getDrawingFailed = (error: data.Error): GetDrawingFailed => ({
+    type: actionTypes.GET_DRAWING_FAILED,
+    error: error
+})
+
+
+

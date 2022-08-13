@@ -26,3 +26,8 @@ export interface SignUpRequest {
     username: string,
     password: string,
 }
+
+export interface GetDrawingRequest {
+    userId: number,
+    wordId: number,
+}

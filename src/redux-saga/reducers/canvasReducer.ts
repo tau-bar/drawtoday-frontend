@@ -16,6 +16,11 @@ const reducer = (state = intitialState, action: Action) => {
             }
         case actionTypes.LOGOUT:
             return intitialState
+        case actionTypes.GET_DRAWING_SUCCESS:
+            return {
+                ...state,
+                savedDraft: action.payload.drawing
+            }
         default:
             return state
     }

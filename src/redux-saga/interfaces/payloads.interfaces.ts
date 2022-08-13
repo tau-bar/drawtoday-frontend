@@ -48,3 +48,12 @@ export interface SignUpSuccessPayload {
     userId: number;
     token: string;
 }
+
+export interface GetDrawingPayload {
+    userId: number;
+    wordId: number;
+}
+
+export interface GetDrawingSuccessPayload {
+    drawing: string;
+}

@@ -23,7 +23,11 @@ export enum actionTypes {
     SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS",
     SIGN_UP_FAILED = "SIGN_UP_FAILED",
 
-    LOGOUT = "LOGOUT"
+    LOGOUT = "LOGOUT",
+
+    GET_DRAWING = "GET_DRAWING",
+    GET_DRAWING_SUCCESS = "GET_DRAWING_SUCCESS",
+    GET_DRAWING_FAILED = "GET_DRAWING_FAILED"
 }
 
 export interface SetTheme {
@@ -102,7 +106,22 @@ export interface Logout {
     type: actionTypes.LOGOUT
 }
 
+export interface GetDrawing {
+    type: actionTypes.GET_DRAWING
+    payload: payloads.GetDrawingPayload
+}
+
+export interface GetDrawingSuccess {
+    type: actionTypes.GET_DRAWING_SUCCESS,
+    payload: payloads.GetDrawingSuccessPayload
+}
+
+export interface GetDrawingFailed {
+    type: actionTypes.GET_DRAWING_FAILED,
+    error: data.Error
+}
+
 export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed
     | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed | Login
     | LoginSuccess | LoginFailed | SignUp
-    | SignUpSuccess | SignUpFailed | Logout
+    | SignUpSuccess | SignUpFailed | Logout | GetDrawing | GetDrawingSuccess | GetDrawingFailed
