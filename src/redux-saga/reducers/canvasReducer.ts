@@ -21,6 +21,8 @@ const reducer = (state = intitialState, action: Action) => {
                 ...state,
                 savedDraft: action.payload.drawing
             }
+        case actionTypes.GET_DRAWING_FAILED:
+            return intitialState
         default:
             return state
     }
