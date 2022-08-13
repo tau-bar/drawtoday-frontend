@@ -16,7 +16,6 @@ function DrawPage({ ...other }) {
 	useEffect(() => {
 		if (userId !== 0) {
 			dispatch(getWordOfDay(userId));
-			dispatch(getWordOfDay(userId));
 		}
 	}, [userId]);
 

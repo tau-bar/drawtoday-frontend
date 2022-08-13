@@ -35,9 +35,6 @@ const Canvas = () => {
 			dispatch(
 				postDrawing(ref?.getSaveData(), new Date(), userId, words.id)
 			);
-			dispatch(
-				postDrawing(ref?.getSaveData(), new Date(), userId, words.id)
-			);
 		} else {
 			console.error("Could not obtain ref to canvas.");
 		}

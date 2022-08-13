@@ -67,8 +67,6 @@ const LoginModal = () => {
 			return;
 		}
 
-		// TODO: Figure out why put() in saga doesn't run on the first try.
-		dispatch(login(username, password));
 		dispatch(login(username, password));
 	};
 
@@ -94,8 +92,6 @@ const LoginModal = () => {
 			return;
 		}
 
-		// TODO: Figure out why put() in saga doesn't run on the first try.
-		dispatch(signUp(username, password));
 		dispatch(signUp(username, password));
 	};
 
