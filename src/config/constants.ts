@@ -14,6 +14,7 @@ export interface PostDrawingRequest {
     userId: number,
     wordId: number,
     date: Date,
+    token: string,
 }
 
 export interface LoginRequest {

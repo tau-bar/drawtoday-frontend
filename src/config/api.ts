@@ -15,6 +15,9 @@ export const getWordOfDay = (data: GetWordOfDayRequest) => {
 };
 
 export const postUserDrawing = async (data: PostDrawingRequest) => {
+    api.setHeaders({
+        "Authorization": `Bearer ${data.token}`
+    })
     return await api.post("api/postDrawing", data)
 };
 

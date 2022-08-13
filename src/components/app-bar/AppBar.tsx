@@ -1,17 +1,11 @@
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import {
-	AppBar,
-	Box,
-	Button,
-	IconButton,
-	Paper,
-	Toolbar,
-	Typography,
-} from "@mui/material";
+import { AppBar, Box, Button, IconButton, Paper, Toolbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { THEME } from "../../config/constants";
+import img from "../../drawtoday.png";
 import { logout, toggleTheme } from "../../redux-saga/actions";
 import { RootState } from "../../redux-saga/reducers/rootReducer";
+import "./AppBar.scss";
 
 export const TopAppBar = () => {
 	const dispatch = useDispatch();
@@ -23,7 +17,7 @@ export const TopAppBar = () => {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
 				<Paper>
-					<Toolbar>
+					<Toolbar className="AppBar">
 						<IconButton
 							onClick={() =>
 								setTimeout(() => dispatch(toggleTheme()), 200)
@@ -36,13 +30,7 @@ export const TopAppBar = () => {
 								<Brightness4 />
 							)}
 						</IconButton>
-						<Typography
-							variant="h6"
-							component="div"
-							sx={{ flexGrow: 1 }}
-						>
-							drawtoday
-						</Typography>
+						<img className="AppbarLogo" src={img}></img>
 						{userId !== 0 && (
 							<Button
 								color="inherit"

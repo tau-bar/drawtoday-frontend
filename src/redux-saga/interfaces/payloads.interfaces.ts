@@ -1,3 +1,4 @@
+import * as data from "../interfaces/data.interfaces";
 
 export interface ThemePayload {
     mode: string;
@@ -25,6 +26,7 @@ export interface PostDrawingPayload {
     wordId: number;
     userId: number;
     date: Date;
+    authentication: data.AuthenticationData;
 }
 
 export interface LoginPayload {

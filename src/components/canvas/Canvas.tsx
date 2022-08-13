@@ -16,7 +16,7 @@ const Canvas = () => {
 	const {
 		canvas: { savedDraft },
 		words,
-		user: { userId },
+		user: { userId, token },
 	} = useSelector((state: RootState) => state);
 
 	useEffect(() => {
@@ -33,7 +33,13 @@ const Canvas = () => {
 		if (ref) {
 			saveDrawing();
 			dispatch(
-				postDrawing(ref?.getSaveData(), new Date(), userId, words.id)
+				postDrawing(
+					ref?.getSaveData(),
+					new Date(),
+					userId,
+					words.id,
+					token
+				)
 			);
 		} else {
 			console.error("Could not obtain ref to canvas.");

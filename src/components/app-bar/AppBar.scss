@@ -1,0 +1,10 @@
+.AppBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .AppbarLogo {
+        width: 150px;
+    }
+}
+

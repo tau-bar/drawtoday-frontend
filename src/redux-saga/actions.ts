@@ -64,7 +64,8 @@ export const postDrawing = (
     drawing: string,
     date: Date,
     userId: number,
-    wordId: number
+    wordId: number,
+    token: string
 ): PostDrawing => ({
     type: actionTypes.POST_DRAWING,
     payload: {
@@ -72,6 +73,9 @@ export const postDrawing = (
         date,
         userId,
         wordId,
+        authentication: {
+            token
+        }
     },
 });
 

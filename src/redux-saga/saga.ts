@@ -1,7 +1,7 @@
-import { all, call, put, take, takeEvery } from 'redux-saga/effects';
+import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { getWordOfDay, login, postUserDrawing, signUpRequest } from '../config/api';
 import { getWordOfDayFailed, getWordOfDaySuccess, loginFailed, loginSuccess, postDrawingFailed, postDrawingSuccess, signUpFailed, signUpSuccess } from './actions';
-import { actionTypes, GetWordOfDay, Login, LoginSuccess, PostDrawing, SignUp } from './interfaces/actions.interfaces';
+import { actionTypes, GetWordOfDay, Login, PostDrawing, SignUp } from './interfaces/actions.interfaces';
 
 function* getWordOfDaySaga(action: GetWordOfDay) {
     const { data, status } = yield call(() => getWordOfDay({ userId: action.payload.userId }))
@@ -23,7 +23,7 @@ function* loginUserSaga(action: Login) {
 
 function* postDrawingSaga(action: PostDrawing) {
     const payload = action.payload
-    const { status } = yield call(() => postUserDrawing({ drawing: payload.drawing, wordId: payload.wordId, userId: payload.userId, date: payload.date }));
+    const { status } = yield call(() => postUserDrawing({ drawing: payload.drawing, wordId: payload.wordId, userId: payload.userId, date: payload.date, token: payload.authentication.token }));
     yield put(status === 200 ? postDrawingSuccess() : postDrawingFailed())
 }
 
