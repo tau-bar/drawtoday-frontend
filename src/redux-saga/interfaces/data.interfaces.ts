@@ -5,3 +5,7 @@ export interface Error {
 export interface AuthenticationData {
     token: string;
 }
+
+export interface Post {
+    drawing: string
+}

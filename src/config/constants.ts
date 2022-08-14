@@ -31,3 +31,8 @@ export interface GetDrawingRequest {
     userId: number,
     wordId: number,
 }
+
+export interface GetPostsRequest {
+    limit: number,
+    offset: number,
+}

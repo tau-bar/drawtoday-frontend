@@ -57,3 +57,12 @@ export interface GetDrawingPayload {
 export interface GetDrawingSuccessPayload {
     drawing: string;
 }
+
+export interface GetPostsPayload {
+    offset: number;
+    limit: number;
+}
+
+export interface GetPostsSuccessPayload {
+    posts: data.Post[]
+}

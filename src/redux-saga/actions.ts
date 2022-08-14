@@ -4,6 +4,9 @@ import {
     GetDrawing,
     GetDrawingFailed,
     GetDrawingSuccess,
+    GetPosts,
+    GetPostsFailed,
+    GetPostsSuccess,
     GetWordOfDay,
     GetWordOfDayFailed,
     GetWordOfDaySuccess,
@@ -22,6 +25,7 @@ import {
     ToggleTheme
 } from "./interfaces/actions.interfaces";
 import * as data from "./interfaces/data.interfaces";
+import { Post } from "./interfaces/data.interfaces";
 import { ThemePayload, WordPayload } from "./interfaces/payloads.interfaces";
 
 export const setTheme = (payload: ThemePayload): SetTheme => ({
@@ -155,5 +159,24 @@ export const getDrawingFailed = (error: data.Error): GetDrawingFailed => ({
     error: error
 })
 
+export const getPosts = (limit: number, offset: number): GetPosts => ({
+    type: actionTypes.GET_POSTS,
+    payload: {
+        limit,
+        offset
+    }
+})
+
+export const getPostsSuccess = (posts: Post[]): GetPostsSuccess => ({
+    type: actionTypes.GET_POSTS_SUCCESS,
+    payload: {
+        posts
+    }
+})
+
+export const getPostsFailed = (error: data.Error): GetPostsFailed => ({
+    type: actionTypes.GET_POSTS_FAILED,
+    error: error
+})
 
 

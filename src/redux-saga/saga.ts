@@ -1,7 +1,7 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
-import { getDrawing, getWordOfDay, login, postUserDrawing, signUpRequest } from '../config/api';
-import { getDrawingFailed, getDrawingSuccess, getWordOfDayFailed, getWordOfDaySuccess, loginFailed, loginSuccess, postDrawingFailed, postDrawingSuccess, signUpFailed, signUpSuccess } from './actions';
-import { actionTypes, GetDrawing, GetWordOfDay, Login, PostDrawing, SignUp } from './interfaces/actions.interfaces';
+import { getDrawing, getPostsData, getWordOfDay, login, postUserDrawing, signUpRequest } from '../config/api';
+import { getDrawingFailed, getDrawingSuccess, getPostsFailed, getPostsSuccess, getWordOfDayFailed, getWordOfDaySuccess, loginFailed, loginSuccess, postDrawingFailed, postDrawingSuccess, signUpFailed, signUpSuccess } from './actions';
+import { actionTypes, GetDrawing, GetPosts, GetWordOfDay, Login, PostDrawing, SignUp } from './interfaces/actions.interfaces';
 
 function* getWordOfDaySaga(action: GetWordOfDay) {
     const { data, status } = yield call(() => getWordOfDay({ userId: action.payload.userId }))
@@ -33,6 +33,12 @@ function* getDrawingOfWord(action: GetDrawing) {
     yield put(status === 200 ? getDrawingSuccess(data.drawing) : getDrawingFailed(data.message))
 }
 
+function* getPosts(action: GetPosts) {
+    const payload = action.payload;
+    const { status, data } = yield call(() => getPostsData({ offset: payload.offset, limit: payload.limit }));
+    yield put(status === 200 ? getPostsSuccess(data.posts) : getPostsFailed(data.message));
+}
+
 export function* rootSaga(): Generator {
     yield all([
         takeEvery(actionTypes.SIGN_UP, signUpSaga),
@@ -40,5 +46,6 @@ export function* rootSaga(): Generator {
         takeEvery(actionTypes.POST_DRAWING, postDrawingSaga),
         takeEvery(actionTypes.GET_WORD_OF_DAY, getWordOfDaySaga),
         takeEvery(actionTypes.GET_DRAWING, getDrawingOfWord),
+        takeEvery(actionTypes.GET_POSTS, getPosts),
     ])
 }

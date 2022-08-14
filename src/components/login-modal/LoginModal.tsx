@@ -53,7 +53,7 @@ const LoginModal = () => {
 		setUsername("");
 		setPassword("");
 		setError("");
-	}, [isLoginMode]);
+	}, [isLoginMode, userId]);
 
 	const handleLogin = () => {
 		setError("");

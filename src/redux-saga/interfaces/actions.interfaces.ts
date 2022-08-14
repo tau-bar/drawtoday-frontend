@@ -27,7 +27,11 @@ export enum actionTypes {
 
     GET_DRAWING = "GET_DRAWING",
     GET_DRAWING_SUCCESS = "GET_DRAWING_SUCCESS",
-    GET_DRAWING_FAILED = "GET_DRAWING_FAILED"
+    GET_DRAWING_FAILED = "GET_DRAWING_FAILED",
+
+    GET_POSTS = "GET_POSTS",
+    GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS",
+    GET_POSTS_FAILED = "GET_POSTS_FAILED",
 }
 
 export interface SetTheme {
@@ -121,7 +125,24 @@ export interface GetDrawingFailed {
     error: data.Error
 }
 
+export interface GetPosts {
+    type: actionTypes.GET_POSTS,
+    payload: payloads.GetPostsPayload,
+}
+
+export interface GetPostsSuccess {
+    type: actionTypes.GET_POSTS_SUCCESS,
+    payload: payloads.GetPostsSuccessPayload,
+
+}
+
+export interface GetPostsFailed {
+    type: actionTypes.GET_POSTS_FAILED,
+    error: data.Error
+}
+
 export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed
     | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed | Login
     | LoginSuccess | LoginFailed | SignUp
     | SignUpSuccess | SignUpFailed | Logout | GetDrawing | GetDrawingSuccess | GetDrawingFailed
+    | GetPosts | GetPostsSuccess | GetPostsFailed

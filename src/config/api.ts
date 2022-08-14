@@ -1,5 +1,5 @@
 import { create } from "apisauce";
-import { GetDrawingRequest, GetWordOfDayRequest, LoginRequest, PostDrawingRequest, SignUpRequest } from "./constants";
+import { GetDrawingRequest, GetPostsRequest, GetWordOfDayRequest, LoginRequest, PostDrawingRequest, SignUpRequest } from "./constants";
 
 const header = {
     "content-type": "application/json",
@@ -31,4 +31,8 @@ export const signUpRequest = async (data: SignUpRequest) => {
 
 export const getDrawing = async (data: GetDrawingRequest) => {
     return await api.get("/api/getDrawing", data);
+}
+
+export const getPostsData = async (data: GetPostsRequest) => {
+    return await api.get("/api/getPosts", data)
 }

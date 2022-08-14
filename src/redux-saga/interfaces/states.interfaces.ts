@@ -1,4 +1,5 @@
 import { THEME } from "../../config/constants"
+import { Post } from "./data.interfaces"
 
 export interface ThemeState {
     mode: THEME
@@ -27,4 +28,8 @@ export interface UserState {
     token: string,
     isLoginLoading: boolean,
     loginError: string,
+}
+
+export interface PostState {
+    posts: Post[]
 }
