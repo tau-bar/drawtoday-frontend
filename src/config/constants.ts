@@ -35,4 +35,12 @@ export interface GetDrawingRequest {
 export interface GetPostsRequest {
     limit: number,
     offset: number,
+    userId: number,
+}
+
+export interface ChangePostLikeRequest {
+    drawingId: number,
+    likeValue: boolean,
+    userId: number,
+    token: string,
 }

@@ -59,10 +59,18 @@ export interface GetDrawingSuccessPayload {
 }
 
 export interface GetPostsPayload {
+    userId: number;
     offset: number;
     limit: number;
 }
 
 export interface GetPostsSuccessPayload {
     posts: data.Post[]
+}
+
+export interface ChangePostLikePayload {
+    likeValue: boolean;
+    drawingId: number;
+    userId: number;
+    authentication: data.AuthenticationData;
 }

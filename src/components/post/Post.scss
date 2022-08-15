@@ -6,13 +6,35 @@
     justify-content: center;
     margin-bottom: 20px;
 
-    .PostUsername {
-        text-align: left;
+    .PostWord {
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
     }
 
     .PostIcons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         margin-top: 10px;
         margin-bottom: 10px;
-        text-align: left;
+        font-size: 15px;
+
+        .FavouriteDiv {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 50px;
+            justify-content: space-around;
+        }
+
+        .FavouriteIcon {
+            color: #fb3958;
+        }
+
+        .FavouriteIcon:hover {
+            cursor: pointer;
+        }
     }
 }

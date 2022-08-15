@@ -1,4 +1,4 @@
-import { Brightness4, Brightness7 } from "@mui/icons-material";
+import { Brightness7, DarkMode } from "@mui/icons-material";
 import { AppBar, Box, Button, IconButton, Paper, Toolbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { THEME } from "../../config/constants";
@@ -27,7 +27,7 @@ export const TopAppBar = () => {
 							{mode === THEME.DARK ? (
 								<Brightness7 />
 							) : (
-								<Brightness4 />
+								<DarkMode />
 							)}
 						</IconButton>
 						<img className="AppbarLogo" src={img}></img>

@@ -32,6 +32,10 @@ export enum actionTypes {
     GET_POSTS = "GET_POSTS",
     GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS",
     GET_POSTS_FAILED = "GET_POSTS_FAILED",
+
+    CHANGE_POST_LIKE = "CHANGE_POST_LIKE",
+    CHANGE_POST_LIKE_SUCCESS = "CHANGE_POST_LIKE_SUCCESS",
+    CHANGE_POST_LIKE_FAILED = "CHANGE_POST_LIKE_FAILED",
 }
 
 export interface SetTheme {
@@ -139,6 +143,11 @@ export interface GetPostsSuccess {
 export interface GetPostsFailed {
     type: actionTypes.GET_POSTS_FAILED,
     error: data.Error
+}
+
+export interface ChangePostLike {
+    type: actionTypes.CHANGE_POST_LIKE,
+    payload: payloads.ChangePostLikePayload,
 }
 
 export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed

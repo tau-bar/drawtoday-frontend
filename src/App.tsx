@@ -5,7 +5,7 @@ import {
 	CssBaseline,
 	Paper,
 } from "@mui/material";
-import { cyan, deepOrange, grey, orange } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -31,21 +31,21 @@ const App = () => {
 							secondary: grey[800],
 						},
 						background: {
-							default: cyan[400],
-							paper: orange[200],
+							default: "#39ace7",
+							paper: "#9bd4e4",
 						},
 				  }
 				: {
 						background: {
-							default: "#0A1929",
-							paper: deepOrange[900],
+							default: "#000",
+							paper: "#0A1929",
 						},
 				  }),
 		},
 		typography: {},
 	});
 
-	const [currentPage, setCurrentPage] = useState(1);
+	const [currentPage, setCurrentPage] = useState(0);
 
 	const pages = [<DrawPage />, <BrowsePage />];
 

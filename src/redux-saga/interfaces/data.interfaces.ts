@@ -7,5 +7,11 @@ export interface AuthenticationData {
 }
 
 export interface Post {
-    drawing: string
+    drawing: string,
+    username: string,
+    word: string,
+    likes: number,
+    userId: number,
+    drawingId: number,
+    liked: number
 }

@@ -1,5 +1,5 @@
 import { create } from "apisauce";
-import { GetDrawingRequest, GetPostsRequest, GetWordOfDayRequest, LoginRequest, PostDrawingRequest, SignUpRequest } from "./constants";
+import { ChangePostLikeRequest, GetDrawingRequest, GetPostsRequest, GetWordOfDayRequest, LoginRequest, PostDrawingRequest, SignUpRequest } from "./constants";
 
 const header = {
     "content-type": "application/json",
@@ -34,5 +34,12 @@ export const getDrawing = async (data: GetDrawingRequest) => {
 }
 
 export const getPostsData = async (data: GetPostsRequest) => {
-    return await api.get("/api/getPosts", data)
+    return await api.get("/api/getPosts", data);
+}
+
+export const changePostLikeRequest = async (data: ChangePostLikeRequest) => {
+    api.setHeaders({
+        "Authorization": `Bearer ${data.token}`
+    })
+    return await api.put("/api/likePost", data);
 }

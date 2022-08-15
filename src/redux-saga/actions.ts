@@ -159,9 +159,10 @@ export const getDrawingFailed = (error: data.Error): GetDrawingFailed => ({
     error: error
 })
 
-export const getPosts = (limit: number, offset: number): GetPosts => ({
+export const getPosts = (limit: number, offset: number, userId: number): GetPosts => ({
     type: actionTypes.GET_POSTS,
     payload: {
+        userId,
         limit,
         offset
     }
@@ -178,5 +179,19 @@ export const getPostsFailed = (error: data.Error): GetPostsFailed => ({
     type: actionTypes.GET_POSTS_FAILED,
     error: error
 })
+
+export const changePostLike = (likeValue: boolean, drawingId: number, userId: number, token: string) => ({
+    type: actionTypes.CHANGE_POST_LIKE,
+    payload: {
+        likeValue: likeValue,
+        drawingId: drawingId,
+        userId: userId,
+        authentication: {
+            token
+        }
+    }
+})
+
+
 
 

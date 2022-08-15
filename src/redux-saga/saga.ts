@@ -1,7 +1,7 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
-import { getDrawing, getPostsData, getWordOfDay, login, postUserDrawing, signUpRequest } from '../config/api';
+import { changePostLikeRequest, getDrawing, getPostsData, getWordOfDay, login, postUserDrawing, signUpRequest } from '../config/api';
 import { getDrawingFailed, getDrawingSuccess, getPostsFailed, getPostsSuccess, getWordOfDayFailed, getWordOfDaySuccess, loginFailed, loginSuccess, postDrawingFailed, postDrawingSuccess, signUpFailed, signUpSuccess } from './actions';
-import { actionTypes, GetDrawing, GetPosts, GetWordOfDay, Login, PostDrawing, SignUp } from './interfaces/actions.interfaces';
+import { actionTypes, ChangePostLike, GetDrawing, GetPosts, GetWordOfDay, Login, PostDrawing, SignUp } from './interfaces/actions.interfaces';
 
 function* getWordOfDaySaga(action: GetWordOfDay) {
     const { data, status } = yield call(() => getWordOfDay({ userId: action.payload.userId }))
@@ -35,8 +35,14 @@ function* getDrawingOfWord(action: GetDrawing) {
 
 function* getPosts(action: GetPosts) {
     const payload = action.payload;
-    const { status, data } = yield call(() => getPostsData({ offset: payload.offset, limit: payload.limit }));
+    const { status, data } = yield call(() => getPostsData({ offset: payload.offset, limit: payload.limit, userId: payload.userId }));
+    console.log(data)
     yield put(status === 200 ? getPostsSuccess(data.posts) : getPostsFailed(data.message));
+}
+
+function* changePostLike(action: ChangePostLike) {
+    const payload = action.payload;
+    const { status, data } = yield call(() => changePostLikeRequest({ drawingId: payload.drawingId, userId: payload.userId, likeValue: payload.likeValue, token: payload.authentication.token }))
 }
 
 export function* rootSaga(): Generator {
@@ -47,5 +53,6 @@ export function* rootSaga(): Generator {
         takeEvery(actionTypes.GET_WORD_OF_DAY, getWordOfDaySaga),
         takeEvery(actionTypes.GET_DRAWING, getDrawingOfWord),
         takeEvery(actionTypes.GET_POSTS, getPosts),
+        takeEvery(actionTypes.CHANGE_POST_LIKE, changePostLike),
     ])
 }
