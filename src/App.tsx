@@ -14,7 +14,7 @@ import TopAppBar from "./components/app-bar/AppBar";
 import LoginModal from "./components/login-modal/LoginModal";
 import BrowsePage from "./pages/browse-page/BrowsePage";
 import DrawPage from "./pages/draw-page/DrawPage";
-import { changePage } from "./redux-saga/actions";
+import { changePage, clearPosts } from "./redux-saga/actions";
 import { RootState } from "./redux-saga/reducers/rootReducer";
 
 const App = () => {
@@ -22,6 +22,7 @@ const App = () => {
 	const {
 		theme: { mode },
 		page: { pageNumber },
+		user: { userId },
 	} = useSelector((state: RootState) => state);
 
 	const muiTheme = createTheme({
@@ -82,6 +83,7 @@ const App = () => {
 						<BottomNavigationAction
 							label="Browse"
 							icon={<DynamicFeed />}
+							onClick={() => dispatch(clearPosts())}
 						/>
 					</BottomNavigation>
 				</Paper>

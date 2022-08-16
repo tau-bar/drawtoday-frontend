@@ -1,7 +1,7 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { changePostLikeRequest, getDrawing, getPostsData, getWordOfDay, login, postUserDrawing, signUpRequest } from '../config/api';
-import { getDrawingFailed, getDrawingSuccess, getPostsFailed, getPostsSuccess, getWordOfDayFailed, getWordOfDaySuccess, loginFailed, loginSuccess, postDrawingFailed, postDrawingSuccess, signUpFailed, signUpSuccess } from './actions';
-import { actionTypes, ChangePostLike, GetDrawing, GetPosts, GetWordOfDay, Login, PostDrawing, SignUp } from './interfaces/actions.interfaces';
+import { getDrawingFailed, getDrawingSuccess, getPostsFailed, getPostsSuccess, getWordOfDayFailed, getWordOfDaySuccess, loginFailed, loginSuccess, postDrawingFailed, postDrawingSuccess, reloadPostsFailed, reloadPostsSuccess, signUpFailed, signUpSuccess } from './actions';
+import { actionTypes, ChangePostLike, GetDrawing, GetPosts, GetWordOfDay, Login, PostDrawing, ReloadPosts, SignUp } from './interfaces/actions.interfaces';
 
 function* getWordOfDaySaga(action: GetWordOfDay) {
     const { data, status } = yield call(() => getWordOfDay({ userId: action.payload.userId }))
@@ -44,6 +44,12 @@ function* changePostLike(action: ChangePostLike) {
     const { status, data } = yield call(() => changePostLikeRequest({ drawingId: payload.drawingId, userId: payload.userId, likeValue: payload.likeValue, token: payload.authentication.token }))
 }
 
+function* reloadPosts(action: ReloadPosts) {
+    const payload = action.payload;
+    const { status, data } = yield call(() => getPostsData({ offset: payload.offset, limit: payload.limit, userId: payload.userId }));
+    yield put(status === 200 ? reloadPostsSuccess(data.posts) : reloadPostsFailed(data.message));
+}
+
 export function* rootSaga(): Generator {
     yield all([
         takeEvery(actionTypes.SIGN_UP, signUpSaga),
@@ -53,5 +59,6 @@ export function* rootSaga(): Generator {
         takeEvery(actionTypes.GET_DRAWING, getDrawingOfWord),
         takeEvery(actionTypes.GET_POSTS, getPosts),
         takeEvery(actionTypes.CHANGE_POST_LIKE, changePostLike),
+        takeEvery(actionTypes.RELOAD_POSTS, reloadPosts)
     ])
 }

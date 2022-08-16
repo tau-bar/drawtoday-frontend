@@ -38,6 +38,12 @@ export enum actionTypes {
     CHANGE_POST_LIKE_FAILED = "CHANGE_POST_LIKE_FAILED",
 
     CHANGE_PAGE = "CHANGE_PAGE",
+
+    RELOAD_POSTS = "RELOAD_POSTS",
+    RELOAD_POSTS_SUCCESS = "RELOAD_POSTS_SUCCESS",
+    RELOAD_POSTS_FAILED = "RELOAD_POSTS_FAILED",
+
+    CLEAR_POSTS = "",
 }
 
 export interface SetTheme {
@@ -157,8 +163,29 @@ export interface ChangePage {
     payload: payloads.ChangePagePayload
 }
 
+export interface ReloadPosts {
+    type: actionTypes.RELOAD_POSTS
+    payload: payloads.GetPostsPayload,
+}
+
+export interface ReloadPostsSuccess {
+    type: actionTypes.RELOAD_POSTS_SUCCESS,
+    payload: payloads.GetPostsSuccessPayload,
+}
+
+export interface ReloadPostsFailed {
+    type: actionTypes.RELOAD_POSTS_FAILED,
+    error: data.Error,
+}
+
+export interface ClearPosts {
+    type: actionTypes.CLEAR_POSTS,
+}
+
 export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed
     | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed | Login
     | LoginSuccess | LoginFailed | SignUp
     | SignUpSuccess | SignUpFailed | Logout | GetDrawing | GetDrawingSuccess | GetDrawingFailed
     | GetPosts | GetPostsSuccess | GetPostsFailed | ChangePage
+    | ReloadPosts | ReloadPostsSuccess | ReloadPostsFailed
+    | ClearPosts

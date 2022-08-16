@@ -16,6 +16,16 @@ const reducer = (state = intitialState, action: Action) => {
             return {
                 ...state,
             }
+        case actionTypes.RELOAD_POSTS_SUCCESS:
+            return {
+                ...state,
+                posts: action.payload.posts
+            }
+        case actionTypes.CLEAR_POSTS:
+            return {
+                ...state,
+                posts: []
+            }
         default:
             return state;
     }

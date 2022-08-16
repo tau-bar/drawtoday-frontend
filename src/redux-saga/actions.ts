@@ -1,6 +1,9 @@
 import { DEFAULT_CANVAS } from "../config/constants";
 import {
     actionTypes,
+    ChangePage,
+    ChangePostLike,
+    ClearPosts,
     GetDrawing,
     GetDrawingFailed,
     GetDrawingSuccess,
@@ -17,6 +20,9 @@ import {
     PostDrawing,
     PostDrawingFailed,
     PostDrawingSuccess,
+    ReloadPosts,
+    ReloadPostsFailed,
+    ReloadPostsSuccess,
     SaveDraftInStorage,
     SetTheme,
     SignUp,
@@ -180,7 +186,7 @@ export const getPostsFailed = (error: data.Error): GetPostsFailed => ({
     error: error
 })
 
-export const changePostLike = (likeValue: boolean, drawingId: number, userId: number, token: string) => ({
+export const changePostLike = (likeValue: boolean, drawingId: number, userId: number, token: string): ChangePostLike => ({
     type: actionTypes.CHANGE_POST_LIKE,
     payload: {
         likeValue: likeValue,
@@ -192,13 +198,36 @@ export const changePostLike = (likeValue: boolean, drawingId: number, userId: nu
     }
 })
 
-export const changePage = (newPageNumber: number) => ({
+export const changePage = (newPageNumber: number): ChangePage => ({
     type: actionTypes.CHANGE_PAGE,
     payload: {
         newPageNumber: newPageNumber,
     }
 })
 
+export const reloadPosts = (limit: number, userId: number): ReloadPosts => ({
+    type: actionTypes.RELOAD_POSTS,
+    payload: {
+        limit,
+        offset: 0,
+        userId,
+    }
+})
 
+export const reloadPostsSuccess = (posts: Post[]): ReloadPostsSuccess => ({
+    type: actionTypes.RELOAD_POSTS_SUCCESS,
+    payload: {
+        posts
+    }
+})
+
+export const reloadPostsFailed = (error: data.Error): ReloadPostsFailed => ({
+    type: actionTypes.RELOAD_POSTS_FAILED,
+    error: error
+})
+
+export const clearPosts = (): ClearPosts => ({
+    type: actionTypes.CLEAR_POSTS,
+})
 
 
