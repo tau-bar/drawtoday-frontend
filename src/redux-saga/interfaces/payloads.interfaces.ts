@@ -74,3 +74,7 @@ export interface ChangePostLikePayload {
     userId: number;
     authentication: data.AuthenticationData;
 }
+
+export interface ChangePagePayload {
+    newPageNumber: number;
+}

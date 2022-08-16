@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import canvasReducer from "./canvasReducer";
+import pageReducer from "./pageReducer";
 import postReducer from "./postsReducer";
 import themeReducer from "./themeReducer";
 import userReducer from "./userReducer";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     canvas: canvasReducer,
     user: userReducer,
     posts: postReducer,
+    page: pageReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>;

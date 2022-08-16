@@ -7,18 +7,21 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.scss";
 import TopAppBar from "./components/app-bar/AppBar";
 import LoginModal from "./components/login-modal/LoginModal";
 import BrowsePage from "./pages/browse-page/BrowsePage";
 import DrawPage from "./pages/draw-page/DrawPage";
+import { changePage } from "./redux-saga/actions";
 import { RootState } from "./redux-saga/reducers/rootReducer";
 
 const App = () => {
+	const dispatch = useDispatch();
 	const {
 		theme: { mode },
+		page: { pageNumber },
 	} = useSelector((state: RootState) => state);
 
 	const muiTheme = createTheme({
@@ -45,9 +48,11 @@ const App = () => {
 		typography: {},
 	});
 
-	const [currentPage, setCurrentPage] = useState(0);
-
 	const pages = [<DrawPage />, <BrowsePage />];
+
+	const setPage = (newPageNumber: number) => {
+		dispatch(changePage(newPageNumber));
+	};
 
 	return (
 		<ThemeProvider theme={muiTheme}>
@@ -55,16 +60,16 @@ const App = () => {
 			<div className="App">
 				<TopAppBar />
 				<LoginModal />
-				{pages[currentPage]}
+				{pages[pageNumber]}
 				<Paper
 					sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
 					elevation={3}
 				>
 					<BottomNavigation
 						showLabels
-						value={currentPage}
+						value={pageNumber}
 						onChange={(_, newValue) => {
-							setCurrentPage(newValue);
+							setPage(newValue);
 						}}
 					>
 						<BottomNavigationAction label="Draw" icon={<Brush />} />

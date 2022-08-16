@@ -33,3 +33,7 @@ export interface UserState {
 export interface PostState {
     posts: Post[]
 }
+
+export interface PageState {
+    pageNumber: number,
+}

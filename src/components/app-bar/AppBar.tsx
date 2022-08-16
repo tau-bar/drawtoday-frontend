@@ -2,7 +2,8 @@ import { Brightness7, DarkMode } from "@mui/icons-material";
 import { AppBar, Box, Button, IconButton, Paper, Toolbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { THEME } from "../../config/constants";
-import img from "../../drawtoday.png";
+import lightModeImg from "../../drawtoday_black.png";
+import darkModeImg from "../../drawtoday_white.png";
 import { logout, toggleTheme } from "../../redux-saga/actions";
 import { RootState } from "../../redux-saga/reducers/rootReducer";
 import "./AppBar.scss";
@@ -30,7 +31,12 @@ export const TopAppBar = () => {
 								<DarkMode />
 							)}
 						</IconButton>
-						<img className="AppbarLogo" src={img}></img>
+						<img
+							className="AppbarLogo"
+							src={
+								mode === THEME.DARK ? darkModeImg : lightModeImg
+							}
+						></img>
 						{userId !== 0 && (
 							<Button
 								color="inherit"

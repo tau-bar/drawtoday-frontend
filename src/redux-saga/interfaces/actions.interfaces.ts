@@ -36,6 +36,8 @@ export enum actionTypes {
     CHANGE_POST_LIKE = "CHANGE_POST_LIKE",
     CHANGE_POST_LIKE_SUCCESS = "CHANGE_POST_LIKE_SUCCESS",
     CHANGE_POST_LIKE_FAILED = "CHANGE_POST_LIKE_FAILED",
+
+    CHANGE_PAGE = "CHANGE_PAGE",
 }
 
 export interface SetTheme {
@@ -150,8 +152,13 @@ export interface ChangePostLike {
     payload: payloads.ChangePostLikePayload,
 }
 
+export interface ChangePage {
+    type: actionTypes.CHANGE_PAGE,
+    payload: payloads.ChangePagePayload
+}
+
 export type Action = SetTheme | ToggleTheme | GetWordOfDay | GetWordOfDaySuccess | GetWordOfDayFailed
     | SaveDraftInStorage | PostDrawing | PostDrawingSuccess | PostDrawingFailed | Login
     | LoginSuccess | LoginFailed | SignUp
     | SignUpSuccess | SignUpFailed | Logout | GetDrawing | GetDrawingSuccess | GetDrawingFailed
-    | GetPosts | GetPostsSuccess | GetPostsFailed
+    | GetPosts | GetPostsSuccess | GetPostsFailed | ChangePage

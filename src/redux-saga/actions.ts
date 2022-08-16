@@ -192,6 +192,13 @@ export const changePostLike = (likeValue: boolean, drawingId: number, userId: nu
     }
 })
 
+export const changePage = (newPageNumber: number) => ({
+    type: actionTypes.CHANGE_PAGE,
+    payload: {
+        newPageNumber: newPageNumber,
+    }
+})
+
 
 
 
