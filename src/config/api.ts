@@ -6,7 +6,7 @@ const header = {
 }
 
 export const api = create({
-    baseURL: 'http://localhost:3001',
+    baseURL: 'https://drawtoday-server.herokuapp.com',
     headers: header,
 })
 

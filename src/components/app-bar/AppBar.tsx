@@ -1,5 +1,5 @@
 import { Brightness7, DarkMode } from "@mui/icons-material";
-import { AppBar, Box, Button, IconButton, Paper, Toolbar } from "@mui/material";
+import { AppBar, Button, IconButton, Paper, Toolbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { THEME } from "../../config/constants";
 import lightModeImg from "../../drawtoday_black.png";
@@ -15,40 +15,32 @@ export const TopAppBar = () => {
 		user: { userId },
 	} = useSelector((state: RootState) => state);
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="sticky">
-				<Paper>
-					<Toolbar className="AppBar">
-						<IconButton
-							onClick={() =>
-								setTimeout(() => dispatch(toggleTheme()), 200)
-							}
+		<AppBar position="sticky">
+			<Paper>
+				<Toolbar className="AppBar">
+					<IconButton
+						onClick={() =>
+							setTimeout(() => dispatch(toggleTheme()), 200)
+						}
+						color="inherit"
+					>
+						{mode === THEME.DARK ? <Brightness7 /> : <DarkMode />}
+					</IconButton>
+					<img
+						className="AppbarLogo"
+						src={mode === THEME.DARK ? darkModeImg : lightModeImg}
+					></img>
+					{userId !== 0 && (
+						<Button
 							color="inherit"
+							onClick={() => dispatch(logout())}
 						>
-							{mode === THEME.DARK ? (
-								<Brightness7 />
-							) : (
-								<DarkMode />
-							)}
-						</IconButton>
-						<img
-							className="AppbarLogo"
-							src={
-								mode === THEME.DARK ? darkModeImg : lightModeImg
-							}
-						></img>
-						{userId !== 0 && (
-							<Button
-								color="inherit"
-								onClick={() => dispatch(logout())}
-							>
-								Logout
-							</Button>
-						)}
-					</Toolbar>
-				</Paper>
-			</AppBar>
-		</Box>
+							Logout
+						</Button>
+					)}
+				</Toolbar>
+			</Paper>
+		</AppBar>
 	);
 };
 
