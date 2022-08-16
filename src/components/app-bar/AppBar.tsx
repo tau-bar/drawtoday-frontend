@@ -28,6 +28,7 @@ export const TopAppBar = () => {
 					</IconButton>
 					<img
 						className="AppbarLogo"
+						alt="drawtoday"
 						src={mode === THEME.DARK ? darkModeImg : lightModeImg}
 					></img>
 					{userId !== 0 && (

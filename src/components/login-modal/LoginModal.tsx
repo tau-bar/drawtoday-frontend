@@ -35,7 +35,7 @@ const LoginModal = () => {
 
 	const dispatch = useDispatch();
 	const {
-		user: { userId, token, isLoginLoading, loginError },
+		user: { userId, isLoginLoading, loginError },
 	} = useSelector((state: RootState) => state);
 
 	const [username, setUsername] = useState("");
