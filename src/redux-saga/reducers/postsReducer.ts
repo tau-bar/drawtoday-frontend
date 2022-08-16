@@ -8,9 +8,13 @@ const intitialState: PostState = {
 const reducer = (state = intitialState, action: Action) => {
     switch (action.type) {
         case actionTypes.GET_POSTS_SUCCESS:
+            action.payload.posts.forEach(post => {
+                if (state.posts.filter(p => p.drawingId === post.drawingId).length === 0) {
+                    state.posts.push(post);
+                }
+            })
             return {
                 ...state,
-                posts: action.payload.posts
             }
         default:
             return state;

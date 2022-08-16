@@ -7,6 +7,7 @@ import { rootSaga } from '../redux-saga/saga'
 
 const persistConfig = {
   key: 'drawtoday',
+  blacklist: ['posts'],
   storage
 }
 

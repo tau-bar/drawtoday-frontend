@@ -36,7 +36,6 @@ function* getDrawingOfWord(action: GetDrawing) {
 function* getPosts(action: GetPosts) {
     const payload = action.payload;
     const { status, data } = yield call(() => getPostsData({ offset: payload.offset, limit: payload.limit, userId: payload.userId }));
-    console.log(data)
     yield put(status === 200 ? getPostsSuccess(data.posts) : getPostsFailed(data.message));
 }
 

@@ -5,6 +5,8 @@ export enum THEME {
 
 export const DEFAULT_CANVAS = '{"lines":[],"width":400,"height":400}';
 
+export const NUM_POSTS_PER_REQUEST = 10;
+
 export interface GetWordOfDayRequest {
     userId: number,
 }
