@@ -9,7 +9,6 @@ const intitialState: CanvasState = {
 const reducer = (state = intitialState, action: Action) => {
     switch (action.type) {
         case actionTypes.SAVE_DRAFT_IN_STORAGE:
-            console.log(action.payload.drawing)
             return {
                 ...state,
                 savedDraft: action.payload.drawing,

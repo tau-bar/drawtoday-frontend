@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PostCard from "../../components/post/Post";
@@ -22,6 +22,10 @@ const BrowsePage = ({ ...other }) => {
 			setOffset(offset + NUM_POSTS_PER_REQUEST);
 		}
 	}, []);
+
+	if (posts.length === 0) {
+		return <CircularProgress className="BrowsePage" />;
+	}
 
 	return (
 		<div className="BrowsePage">

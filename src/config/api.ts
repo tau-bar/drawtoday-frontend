@@ -11,7 +11,7 @@ export const api = create({
 })
 
 export const getWordOfDay = (data: GetWordOfDayRequest) => {
-    return api.get("http://localhost:3001/api/getWordOfDay", data);
+    return api.get("/api/getWordOfDay", data);
 };
 
 export const postUserDrawing = async (data: PostDrawingRequest) => {
