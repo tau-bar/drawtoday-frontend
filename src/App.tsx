@@ -62,7 +62,13 @@ const App = () => {
 				<LoginModal />
 				{pages[pageNumber]}
 				<Paper
-					sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+					sx={{
+						position: "fixed",
+						height: "60px",
+						bottom: 0,
+						left: 0,
+						right: 0,
+					}}
 					elevation={3}
 				>
 					<BottomNavigation

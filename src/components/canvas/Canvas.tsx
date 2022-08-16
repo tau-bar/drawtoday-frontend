@@ -45,7 +45,6 @@ const Canvas = () => {
 			console.error("Could not obtain ref to canvas.");
 		}
 	};
-
 	return (
 		<div className="Canvas">
 			<div className="CanvasButtons">
@@ -75,6 +74,8 @@ const Canvas = () => {
 				/>
 			</div>
 			<CanvasDraw
+				canvasWidth={window.innerWidth < 400 ? 300 : 400}
+				canvasHeight={window.innerWidth < 400 ? 300 : 400}
 				hideGrid
 				hideInterface
 				disabled={words.postedToday}
