@@ -58,7 +58,7 @@ const PostCard: FC<PostProps> = ({ post, ...other }) => {
 					<p>{post.word}</p>
 				</Container>
 				<CanvasDraw
-					style={{ touchAction: "none" }}
+					style={{ touchAction: "auto" }}
 					canvasHeight={300}
 					canvasWidth={300}
 					disabled
