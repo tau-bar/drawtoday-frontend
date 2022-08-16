@@ -4,3 +4,11 @@
     align-items: center;
     padding-top: 50px;
 }
+
+@media screen and ( max-height: 720px ) {
+    .DrawPage {
+        padding-top: 20px;
+        overflow-y: scroll;
+        padding-bottom: 100px;
+    }
+ }

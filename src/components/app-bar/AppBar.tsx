@@ -16,7 +16,7 @@ export const TopAppBar = () => {
 	} = useSelector((state: RootState) => state);
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="static">
+			<AppBar position="sticky">
 				<Paper>
 					<Toolbar className="AppBar">
 						<IconButton
