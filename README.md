@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+# ✏️ Welcome to drawtoday! 
+Drawtoday is an app where you draw the word of the day, and then share it with everyone! A new word is available to draw daily, share your creativity with the world! You can also like other's posts if you think that their drawings of the word are cool.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to install drawtoday
+1. Go to https://drawtoday.netlify.app/ and create an account.
+2. Add the app to your home page:
+<img src="https://user-images.githubusercontent.com/61085398/184948833-f6402e84-6429-46f8-aebd-c123a7be0345.png" width="400">
+3. Start drawing!
 
-## Available Scripts
+## Features:
+### 💾 Saving drawing to local storage and posting drawing:
 
-In the project directory, you can run:
+https://user-images.githubusercontent.com/61085398/184949321-06ff5b14-111e-402d-9fec-2396c40ed953.mp4
 
-### `yarn start`
+### ♥ Browsing and liking drawings by others:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://user-images.githubusercontent.com/61085398/184949451-be0fa0bb-653c-44e9-ab23-9e9457458bca.mp4
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 🌙 Dark Mode:
 
-### `yarn test`
+https://user-images.githubusercontent.com/61085398/184949543-325cd2f5-811f-4675-a571-daeb50af9cf7.mp4
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Feedback:
+If you have any feedback on the website/features, feel free to add a new issue here: https://github.com/tau-bar/drawtoday-frontend/issues 
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technology Stack:
+drawtoday is a Progressive Web Application. The frontend was built with Typescript React and Redux Saga, bootstrapped with Material UI and styled with Sass. The backend was built using Node.js and Express, and the database used is MySQL.
