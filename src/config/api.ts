@@ -10,6 +10,11 @@ export const api = create({
     headers: header,
 })
 
+// export const api = create({
+//     baseURL: 'http://localhost:3001',
+//     headers: header,
+// })
+
 export const getWordOfDay = (data: GetWordOfDayRequest) => {
     return api.get("/api/getWordOfDay", data);
 };
