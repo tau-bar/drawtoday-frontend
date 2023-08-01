@@ -1,3 +1,6 @@
+## Backend Repo
+Click [HERE](https://github.com/tau-bar/drawtoday-express-server) for the backend.
+
 # ✏️ Welcome to drawtoday! 
 Drawtoday is an app where you draw the word of the day, and then share it with everyone! A new word is available to draw daily, share your creativity with the world! You can also like other's posts if you think that their drawings of the word are cool.
 
